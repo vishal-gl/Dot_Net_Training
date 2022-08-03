@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32630.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitDeemo", "GitDeemo.csproj", "{72E85D8B-6E67-4229-A955-7FE25E993167}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GC_Memory_Demo", "..\GC_Memory_Demo\GC_Memory_Demo.csproj", "{D049DCE4-13F5-485C-82BE-237A28545EC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{72E85D8B-6E67-4229-A955-7FE25E993167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72E85D8B-6E67-4229-A955-7FE25E993167}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72E85D8B-6E67-4229-A955-7FE25E993167}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72E85D8B-6E67-4229-A955-7FE25E993167}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D049DCE4-13F5-485C-82BE-237A28545EC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D049DCE4-13F5-485C-82BE-237A28545EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D049DCE4-13F5-485C-82BE-237A28545EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D049DCE4-13F5-485C-82BE-237A28545EC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {11C0EEC1-FB6F-49F0-AEC9-0BC674E16D5A}
+	EndGlobalSection
+EndGlobal
