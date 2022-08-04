@@ -16,3 +16,4 @@ select SUBSTRING('vishal@123456678',4,13)
 ----use of charindex(char,string)
 
 select CHARINDEX('@','vishal@123556')
+

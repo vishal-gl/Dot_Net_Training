@@ -1,67 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
 using System.Data.SqlClient;
-namespace SQLCommands_Demo
+
+namespace StudentApp_with_Database
 {
-    class Program
+    class IDatabase
     {
         SqlConnection conn;
 
-        public Program()
+        public IDatabase()
         {
             // Instantiate the connection
-            conn = new SqlConnection("Data Source=NAG1-LHP_N76275;Initial Catalog=Northwind;Integrated Security=SSPI");
+            conn = new SqlConnection("Data Source=NAG1-LHP_N76275;Initial Catalog=SampleDB;Integrated Security=SSPI");
         }
-        static void Main(string[] args)
-        {
-            Program scd = new Program();
-
-            Console.WriteLine();
-            Console.WriteLine("Categories Before Insert");
-            Console.WriteLine("------------------------");
-
-            // use ExecuteReader method
-            scd.ReadData();
-            Console.ReadLine();
-
-            // use ExecuteNonQuery method for Insert
-            scd.Insertdata();
-            Console.WriteLine();
-            Console.WriteLine("Categories After Insert");
-            Console.WriteLine("------------------------------");
-
-            scd.ReadData();
-            Console.ReadLine();
-          //  use ExecuteNonQuery method for Update
-
-           scd.UpdateData();
-
-           Console.WriteLine();
-            Console.WriteLine("Categories After Update");
-            Console.WriteLine("------------------------------");
-
-            scd.ReadData();
-            Console.ReadLine();
-            //// use ExecuteNonQuery method for Delete
-            scd.DeleteData();
-
-            Console.WriteLine();
-            Console.WriteLine("Categories After Delete");
-            Console.WriteLine("------------------------------");
-            Console.ReadLine();
-
-            scd.ReadData();
-            Console.ReadLine();
-            //// use ExecuteScalar method
-            int numberOfRecords = scd.GetNumberOfRecords();
-
-            Console.WriteLine();
-            Console.WriteLine("Number of Records: {0}", numberOfRecords);
-            Console.ReadLine();
-        }
-
-        /// <summary>
-        /// use ExecuteReader method
-        /// </summary>
         public void ReadData()
         {
             SqlDataReader rdr = null;
@@ -72,7 +27,7 @@ namespace SQLCommands_Demo
                 conn.Open();
 
                 // 1. Instantiate a new command with a query and connection
-                SqlCommand cmd = new SqlCommand("select CategoryName from Categories", conn);
+                SqlCommand cmd = new SqlCommand("select * from Student", conn);
 
                 // 2. Call Execute reader to get query results
                 rdr = cmd.ExecuteReader();
@@ -80,8 +35,11 @@ namespace SQLCommands_Demo
                 // print the CategoryName of each record
                 while (rdr.Read())
                 {
-                    Console.WriteLine(rdr[0]);
+
+                    Console.WriteLine("Student Id : {0} Name : {1} Standard : {2} Address : {3}", rdr["Id"], rdr["Name"], rdr["Standard"], rdr["Address"]);
+                    Console.WriteLine();
                 }
+
             }
             finally
             {
@@ -102,17 +60,17 @@ namespace SQLCommands_Demo
         /// <summary>
         /// use ExecuteNonQuery method for Insert
         /// </summary>
-        public void Insertdata()
+        public void Insertdata(int n, string s, string s1, string s2)
         {
             try
             {
                 // Open the connection
                 conn.Open();
 
+
                 // prepare command string
                 string insertString = @"
-                 insert into Categories(CategoryName, Description)
-                 values ('Miscellaneous', 'Whatever doesn''t fit elsewhere')";
+                 insert into Student(Id,Name,Standard,Address) values('"+n+"','"+s+"','"+s1+"','"+s2+"')";
 
                 // 1. Instantiate a new command with a query and connection
                 SqlCommand cmd = new SqlCommand(insertString, conn);
@@ -128,32 +86,92 @@ namespace SQLCommands_Demo
                     conn.Close();
                 }
             }
+
         }
 
         /// <summary>
         /// use ExecuteNonQuery method for Update
         /// </summary>
-        public void UpdateData()
+        public void UpdateData(int n, int m, string s)
         {
             try
             {
                 // Open the connection
                 conn.Open();
+                switch (n)
+                {
+                    case 1:
+                        int p = Convert.ToInt32(s);
+                        string updateString = @"
+                        update Student
+                        set Id=@Id
+                        where Id= '" + m + "'";
 
-                // prepare command string
-                string updateString = @"
-                update Categories
-                set CategoryName = 'Other'
-                where CategoryName = 'Miscellaneous'";
+                        SqlCommand cmd = new SqlCommand(updateString);
+                        SqlParameter param = new SqlParameter();
+                        param.ParameterName = "@Id";
+                        param.Value = p;
+                        cmd.Parameters.Add(param);
+                        cmd.Connection = conn;
+                        cmd.ExecuteNonQuery();
+                        break;
 
-                // 1. Instantiate a new command with command text only
-                SqlCommand cmd = new SqlCommand(updateString);
 
-                // 2. Set the Connection property
-                cmd.Connection = conn;
 
-                // 3. Call ExecuteNonQuery to send command
-                cmd.ExecuteNonQuery();
+                    case 2:
+
+                        string updateString1 = @"
+                        update Student
+                        set Name=@Name
+                        where Id= '" + m + "'";
+
+                        SqlCommand cmd1 = new SqlCommand(updateString1);
+                        SqlParameter param1 = new SqlParameter();
+                        param1.ParameterName = "@Name";
+                        param1.Value = s;
+                        cmd1.Parameters.Add(param1);
+                        cmd1.Connection = conn;
+                        cmd1.ExecuteNonQuery();
+                        break;
+                    case 3:
+                        string updateString2 = @"
+                        update Student
+                        set Standard=@Standard
+                        where Id= '" + m + "'";
+
+                        SqlCommand cmd2 = new SqlCommand(updateString2);
+                        SqlParameter param2 = new SqlParameter();
+                        param2.ParameterName = "@Standard";
+                        param2.Value = s;
+                        cmd2.Parameters.Add(param2);
+                        cmd2.Connection = conn;
+                        cmd2.ExecuteNonQuery();
+                        break;
+
+                    case 4:
+                        string updateString3 = @"
+                        update Student
+                        set Address=@Address
+                        where Id= '" + m + "'";
+
+                        SqlCommand cmd3 = new SqlCommand(updateString3);
+                        SqlParameter param3 = new SqlParameter();
+                        param3.ParameterName = "@Address";
+                        param3.Value = s;
+                        cmd3.Parameters.Add(param3);
+                        cmd3.Connection = conn;
+                        cmd3.ExecuteNonQuery();
+                        break;
+                    default:
+                        break;
+
+                }
+
+
+
+
+
+
             }
             finally
             {
@@ -168,7 +186,7 @@ namespace SQLCommands_Demo
         /// <summary>
         /// use ExecuteNonQuery method for Delete
         /// </summary>
-        public void DeleteData()
+        public void DeleteData(int n)
         {
             try
             {
@@ -177,8 +195,8 @@ namespace SQLCommands_Demo
 
                 // prepare command string
                 string deleteString = @"
-                 delete from Categories
-                 where CategoryName = 'Other'";
+                 delete from Student
+                 where Id ='" + n + "'";
 
                 // 1. Instantiate a new command
                 SqlCommand cmd = new SqlCommand();
@@ -231,3 +249,5 @@ namespace SQLCommands_Demo
         }
     }
 }
+    
+
