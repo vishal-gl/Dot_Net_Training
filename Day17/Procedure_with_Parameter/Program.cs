@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Demo_NonQueryMethod_Scalar
+namespace Demo_Procedure_with_Parameter
 {
     class Program
     {
