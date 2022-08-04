@@ -3,11 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace StudentApp_Collection
 {
+    
     class Program
     {
+        SqlConnection conn;
+        public Program()
+        {
+            // Instantiate the connection
+            conn = new SqlConnection("Data Source=NAG1-LHP_N76275;Initial Catalog=Northwind;Integrated Security=SSPI");
+        }
 
         static int num = 0;
 
@@ -16,6 +25,7 @@ namespace StudentApp_Collection
         {
             bool flag = true;
             StudentServices S = new StudentServices();
+            Program scd = new Program();
             while (flag)
             {
                 
