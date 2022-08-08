@@ -14,6 +14,10 @@ namespace Assessment_Hospital_Management_System
             Console.WriteLine("Your Input id Invalid");
             Console.WriteLine("Please Give Valid Input");
         }
+        public void NewEx()
+        {
+            Console.WriteLine("Database has no Records!!!");
+        }
 
     }
 }
