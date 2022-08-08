@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assessment_Hospital_Management_System
 {
-    class HospitalServices
+    class HospitalServices:IHospital
     {
         public HospitalServices()
         {
