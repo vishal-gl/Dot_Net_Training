@@ -18,8 +18,10 @@ namespace Assessment_Hospital_Management_System
 
             while (flag)
             {
+                Console.WriteLine();
 
                 H.DisplayMenu();
+                Console.WriteLine();
 
                 try
                 {
