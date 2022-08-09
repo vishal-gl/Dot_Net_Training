@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq_XML_Sort_Demo", "..\Li
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq_XML_Demo", "..\Linq_XML_Demo\Linq_XML_Demo.csproj", "{606657A0-83B9-41E0-9BA1-0AA85E9226A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity_data_mamnagement_demo", "..\Entity_data_mamnagement_demo\Entity_data_mamnagement_demo.csproj", "{73886F75-7DBF-454B-A60C-634B147F1CFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{606657A0-83B9-41E0-9BA1-0AA85E9226A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{606657A0-83B9-41E0-9BA1-0AA85E9226A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{606657A0-83B9-41E0-9BA1-0AA85E9226A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73886F75-7DBF-454B-A60C-634B147F1CFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73886F75-7DBF-454B-A60C-634B147F1CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73886F75-7DBF-454B-A60C-634B147F1CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73886F75-7DBF-454B-A60C-634B147F1CFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

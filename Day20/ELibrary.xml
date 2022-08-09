@@ -2,10 +2,18 @@
 <Ebookstore>
 
 	<book category="Technical" title="Learn With C#" author="Tenin Balm" price="230.00">
+	
+		<Page>220</Page>
 	</book>
-	<book category="Comics" title="Chacha Choudhary" author="Sabu" price="30.00"></book>
-	<book category="Advertisement" title="Enhance Your Skills" author="Crypto" price="330.00"></book>
-	<book category="Educational" title="Mathematics for Class 10th" author="R.D Sharma" price="730.00"></book>
+	<book category="Comics" title="Chacha Choudhary" author="Sabu" price="30.00">
+		<Page>20</Page>
+	</book>
+	<book category="Advertisement" title="Enhance Your Skills" author="Crypto" price="330.00">
+		<Page>200</Page>
+	</book>
+	<book category="Educational" title="Mathematics for Class 10th" author="R.D Sharma" price="730.00">
+		<Page>400</Page>
+	</book>
 	
 	
 
