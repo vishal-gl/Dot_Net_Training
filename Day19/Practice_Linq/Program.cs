@@ -58,7 +58,8 @@ namespace Practice_Linq
 
             //Linq to find student whose studentID is 5
             Student fifthStudent = studentArray.Where(s => s.ID == 5).FirstOrDefault();
-            Console.WriteLine(bill.ToString() + "," + fifthStudent.ToString());
+            Console.WriteLine(bill.Name + ","+bill.Age+","+bill.ID+" : " + fifthStudent.Name);
+            
 
             //2.OfType
             IList list1 = new ArrayList() { 0, "Abhi",1,"two", 3, 'g'};
