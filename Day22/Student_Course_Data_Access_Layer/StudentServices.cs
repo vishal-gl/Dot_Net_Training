@@ -7,15 +7,17 @@ namespace Student_Course_Data_Access_Layer
 
         Sql_Connection std = new Sql_Connection();
         
-        public void AddStudent(string Id, string Name, byte Age, string standard, string city, string cid)
+        public void AddStudent(string Id, string Name, int Age, string standard, string city, string cid)
         {
             if (std.Insertdata(Id, Name, Age, standard, city, cid))
             {
                 Console.WriteLine("Student Details Added Successfully!");
+                Console.WriteLine();
             }
             else
             {
                 Console.WriteLine("Failed To Add Student Details");
+                Console.WriteLine();
             }
         }
 
@@ -84,6 +86,11 @@ namespace Student_Course_Data_Access_Layer
                 Console.WriteLine("\nStudent Not Found");
             }
 
+        }
+
+        public void ReadCourse()
+        {
+            std.ReadCourse();
         }
         
 

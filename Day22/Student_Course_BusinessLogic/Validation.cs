@@ -10,8 +10,17 @@ namespace Student_Course_BusinessLogic
     {
         public void Input()
         {
-            Console.WriteLine("Enter a Valid Output");
+            Console.WriteLine("Please Enter a Valid Output");
+            Console.WriteLine();
+        }
+        public void Constraints()
+        {
+            Console.WriteLine("Please! Fill Only Those CID which are given in the List");
+                
         }
 
     }
+    
+   
+    
 }

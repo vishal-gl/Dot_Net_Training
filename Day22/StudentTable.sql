@@ -1,4 +1,5 @@
 create database Enemy
+go
 create table Student(
 Id nvarchar(10) primary key,
 Name nvarchar(40),

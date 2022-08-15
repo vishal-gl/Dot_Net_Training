@@ -11,7 +11,7 @@ namespace ConsoleApp1
             s = Console.ReadLine();
             for (int i = s.Length - 1; i >= 0; i--)
             {
-                revs += s[i].ToString();
+                revs += s[i];
 
             }
             if (revs == s)

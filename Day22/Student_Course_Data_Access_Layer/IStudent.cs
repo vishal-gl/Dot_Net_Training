@@ -9,7 +9,7 @@ namespace Student_Course_Data_Access_Layer
 {
     interface IStudent
     {
-        void AddStudent(string Id, string Name, byte Age, string Standard, string City, string CId);
+        void AddStudent(string Id, string Name, int Age, string Standard, string City, string CId);
         void Update(byte n, string id, string m);
         
         void DisplayAll();

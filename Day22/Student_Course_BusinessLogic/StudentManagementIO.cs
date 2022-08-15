@@ -21,7 +21,7 @@ namespace Student_Course_BusinessLogic
             try
             {
                 byte option = Convert.ToByte(Console.ReadLine());
-                if (option > 5)
+                if (option>5)
                 {
                     throw new Validation();
                 }
@@ -30,6 +30,12 @@ namespace Student_Course_BusinessLogic
             catch (Validation V)
             {
                 V.Input();
+                return Menu();
+            }
+            catch(Exception e)
+            {
+                
+                Console.WriteLine(e.Message);
                 return Menu();
             }
         }
@@ -43,16 +49,21 @@ namespace Student_Course_BusinessLogic
                 Console.WriteLine("Enter ID:");
                 string id = Console.ReadLine();
                 Console.WriteLine("Enter Age:");
-                byte age = Convert.ToByte(Console.ReadLine());
+                int age = Convert.ToByte(Console.ReadLine());
+                if (age > 125)
+                {
+                    throw new Validation();
+                }
                 Console.WriteLine("Enter Class:");
                 string standard = Console.ReadLine();
                 Console.WriteLine("Enter City:");
                 string city = Console.ReadLine();
-                //Console.WriteLine("You are Registered Now !!!");
-                //Console.WriteLine();
-                //Console.WriteLine("This is List of Courses which we Offered : ");
-                //StudentSQL_Connection std = new StudentSQL_Connection();
-                //std.ReadData1();
+                
+                Console.WriteLine();
+                Console.WriteLine("This is List of Courses which we Offered : ");
+                
+                studentservice.ReadCourse();
+                Console.WriteLine();
 
                 Console.WriteLine("Please Enter The CId");
                 string cid = Console.ReadLine();
@@ -60,12 +71,16 @@ namespace Student_Course_BusinessLogic
 
                 Console.WriteLine();
             }
-            catch (Exception e)
+            catch (Validation v )
             {
-                Console.WriteLine(e.Message);
-                Console.WriteLine("Enter a Valid Input\n");
-                AddStudent();
+                v.Input();
+                Console.WriteLine("Age Should Be less than 125 ");
+                Console.WriteLine();
+                
+                Menu();
             }
+            
+            
 
         }
 
