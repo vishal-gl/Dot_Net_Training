@@ -18,7 +18,8 @@ namespace Business_Logic
             Console.WriteLine("Press 4 to Display Details using Product Id");
             Console.WriteLine("Press 5 to Update Record of Product");
             Console.WriteLine("Press 6 to delete a Record in Product Data using Product Id");
-            Console.WriteLine("Press 7 to Exit");
+            Console.WriteLine("Press 7 to Display All Details of Category using Category Id");
+            Console.WriteLine("Press 8 to Exit");
             Console.WriteLine("Enter Your choice:");
             try
             {
@@ -106,6 +107,26 @@ namespace Business_Logic
                 
             
             
+        }
+
+        public void DisplayCategory()
+        {
+            Console.WriteLine("Enter the Category Id :");
+            string cid = Console.ReadLine();
+            if (service.CCheckId(cid))
+            {
+                service.DisplayCategory(cid);
+                Console.WriteLine();
+
+            }
+            else
+            {
+                Console.WriteLine("The record is not found with this Category Id");
+                Console.WriteLine();
+            }
+
+
+
         }
         public void AddCategory()
         {

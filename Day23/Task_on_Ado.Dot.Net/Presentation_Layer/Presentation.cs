@@ -39,6 +39,9 @@ namespace Presentation_Layer
                         product.Delete();
                         product.DisplayAll();
                         break;
+                    case 7:
+                        product.DisplayCategory();
+                        break;
 
 
                     

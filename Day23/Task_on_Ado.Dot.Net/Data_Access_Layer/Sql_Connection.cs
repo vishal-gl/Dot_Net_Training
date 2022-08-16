@@ -228,6 +228,49 @@ namespace Data_Access_Layer
 
         }
 
+        public bool CheckCId(string Id)
+        {
+            SqlDataReader rdr = null;
+
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // 1. Instantiate a new command with a query and connection
+                SqlCommand cmd = new SqlCommand("select CategoryId from Category", conn);
+
+                // 2. Call Execute reader to get query results
+                rdr = cmd.ExecuteReader();
+
+                // print the id of each record
+                while (rdr.Read())
+                {
+                    if (rdr["CategoryId"].ToString() == Id)
+                    {
+                        return true;
+                    }
+
+                }
+                return false;
+
+            }
+            finally
+            {
+                // close the reader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+        }
         public bool InsertCategory(string CId, string CName)
         {
             try
@@ -321,6 +364,56 @@ namespace Data_Access_Layer
 
                 
                 
+
+            }
+            finally
+            {
+                // close the reader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+        }
+
+        public void ReadDataCategory(string cid)
+        {
+
+            SqlDataReader rdr = null;
+
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // 1. Instantiate a new command with a query and connection
+                SqlCommand cmd = new SqlCommand("select * from Category where Category.CategoryId='" + cid + "'", conn);
+
+                // 2. Call Execute reader to get query results
+                rdr = cmd.ExecuteReader();
+
+                // print the CategoryName of each record
+                while (rdr.Read())
+                {
+                    Console.WriteLine("CategoryId CategoryName  : ");
+                    for (int i = 0; i < rdr.FieldCount; i++)
+                    {
+                        Console.Write(rdr[i] + " ");
+                    }
+                    Console.WriteLine("");
+                }
+
+
+
+
+
 
             }
             finally

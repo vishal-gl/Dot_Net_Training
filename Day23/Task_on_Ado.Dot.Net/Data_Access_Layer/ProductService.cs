@@ -58,10 +58,31 @@ namespace Data_Access_Layer
 
 
         }
+        public bool CCheckId(string Id)
+        {
+
+            if (std.CheckCId(Id))
+            {
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Input Id is not available in Record");
+                return false;
+
+            }
+
+
+        }
 
         public void DisplayProduct(string pid)
         {
             std.ReadDataProduct(pid);
+        }
+
+        public void DisplayCategory(string cid)
+        {
+            std.ReadDataCategory(cid);
         }
 
         public void AddCategory(string CId, string CName)
