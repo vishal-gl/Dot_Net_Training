@@ -33,10 +33,11 @@ namespace Presentation_Layer
                     case 5:
                         product.Update();
                         product.DisplayProduct();
+                        
                         break;
                     case 6:
                         product.Delete();
-                        product.DisplayProduct();
+                        product.DisplayAll();
                         break;
 
 
