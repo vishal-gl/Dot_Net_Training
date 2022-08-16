@@ -32,7 +32,7 @@ namespace Data_Access_Layer
         {
             if (std.GetNumberOfRecords() != 0)
             {
-                Console.WriteLine("All Students Details Are Shown Below:");
+                Console.WriteLine("All Product Details Are Shown Below:");
                 std.ReadData();
             }
 
