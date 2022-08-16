@@ -3,41 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Student_Course_BusinessLogic;
+using Business_Logic;
 
-namespace Student_Course_Presentation
-
+namespace Presentation_Layer
 {
-    class Program
+    class Presentation
     {
         static void Main(string[] args)
         {
-            StudentManagementIO student = new StudentManagementIO();
+            ProductManagementIO product = new ProductManagementIO();
             bool flag = true;
             while (flag)
             {
-                switch (student.Menu())
+                switch (product.Menu())
                 {
                     case 1:
-                        student.AddStudent();
+                        product.AddProduct();
                         break;
-
                     case 2:
-                        student.DisplayAll();
+                        product.AddCategory();
                         break;
 
                     case 3:
-                        student.Update();
-                        student.DisplayAll();
+                        product.DisplayAll();
                         break;
-
                     case 4:
-                        student.DeleteStudent();
-                        student.DisplayAll();
+                        product.DisplayProduct();
                         break;
                     case 5:
-                        student.AddCourse();
+                        product.Update();
+                        product.DisplayProduct();
                         break;
+                    case 6:
+                        product.Delete();
+                        product.DisplayProduct();
+                        break;
+
+
+                    
+
+                    
+                    
 
 
                     default:
@@ -46,5 +52,6 @@ namespace Student_Course_Presentation
                 }
             }
         }
+    
     }
 }

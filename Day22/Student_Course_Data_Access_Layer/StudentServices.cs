@@ -92,11 +92,25 @@ namespace Student_Course_Data_Access_Layer
         {
             std.ReadCourse();
         }
-        
+
+        public void AddCourse(string CId, string CName, string CTutor, int CDuration)
+        {
+            if (std.InsertCourse(CId, CName, CTutor, CDuration))
+            {
+                Console.WriteLine("Course Details Added Successfully!");
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("Failed To Add Course Details");
+                Console.WriteLine();
+            }
+        }
 
 
-        
 
-        
+
+
+
     }
 }

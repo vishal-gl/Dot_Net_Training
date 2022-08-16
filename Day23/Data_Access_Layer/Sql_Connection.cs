@@ -6,59 +6,19 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace Student_Course_Data_Access_Layer
+namespace Data_Access_Layer
 {
-    public class Sql_Connection
+    class Sql_Connection
     {
         SqlConnection conn;
 
         public Sql_Connection()
         {
             // Instantiate the connection
-            conn = new SqlConnection("Data Source=NAG1-LHP_N76275;Initial Catalog=Enemy;Integrated Security=SSPI");
+            conn = new SqlConnection("Data Source=NAG1-LHP_N76275;Initial Catalog=Product_Category;Integrated Security=SSPI");
         }
 
-        public void ReadData()
-        {
-            SqlDataReader rdr = null;
-
-            try
-            {
-                // Open the connection
-                conn.Open();
-
-                // 1. Instantiate a new command with a query and connection
-                SqlCommand cmd = new SqlCommand("select * from Student Inner Join Course on Student.CId=Course.CId", conn);
-
-                // 2. Call Execute reader to get query results
-                rdr = cmd.ExecuteReader();
-
-                // print the CategoryName of each record
-                while (rdr.Read())
-                {
-
-                    Console.WriteLine("Student Id : {0} || Name : {1} || Age :{2} || Standard : {3} || Address : {4} || CID : {5} || CName : {6} || Tutor : {7} || CDuration : {8} ", rdr["Id"], rdr["Name"], rdr["Age"], rdr["Standard"], rdr["City"], rdr["CId"], rdr["CName"], rdr["CTutor"], rdr["CDuration"]);
-                    Console.WriteLine();
-                }
-
-            }
-            finally
-            {
-                // close the reader
-                if (rdr != null)
-                {
-                    rdr.Close();
-                }
-
-                // Close the connection
-                if (conn != null)
-                {
-                    conn.Close();
-                }
-            }
-        }
-
-        public bool Insertdata(string Id, string Name, int Age, string Standard, string City, string CId)
+        public bool InsertPdata(string PId, string PName, float Pprice, string CId)
         {
             try
             {
@@ -68,7 +28,7 @@ namespace Student_Course_Data_Access_Layer
 
                 // prepare command string
 
-                string insertString = $"Insert into Student values('{Id}','{Name}','{Age}','{Standard}','{City}','{CId}')";
+                string insertString = $"Insert into Product values('{PId}','{PName}','{Pprice}','{CId}')";
 
 
                 // 1. Instantiate a new command with a query and connection
@@ -90,14 +50,14 @@ namespace Student_Course_Data_Access_Layer
             {
                 if (e.Number == 547)
                 {
-                    Console.WriteLine("Please Insert Above Metioned Course Id");
+                    Console.WriteLine("Please Insert Above Metioned Category Id");
                     Console.WriteLine();
 
 
                 }
                 if (e.Number == 2627)
                 {
-                    Console.WriteLine("This Student Id is Already Exist In DataBase");
+                    Console.WriteLine("This Product Id is Already Exist In DataBase");
                     Console.WriteLine();
 
                 }
@@ -122,13 +82,95 @@ namespace Student_Course_Data_Access_Layer
 
         }
 
+        public void ReadData()
+        {
+            SqlDataReader rdr = null;
+
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // 1. Instantiate a new command with a query and connection
+                SqlCommand cmd = new SqlCommand("select * from Product Inner Join Category on Product.CategoryId=Category.CategoryId", conn);
+
+                // 2. Call Execute reader to get query results
+                rdr = cmd.ExecuteReader();
+
+                // print the CategoryName of each record
+                while (rdr.Read())
+                {
+
+                    Console.WriteLine("Product Id : {0} || Product Name : {1} || Price :{2} || Category Id : {3} || Category Name : {4} ", rdr["PId"], rdr["PName"], rdr["Price"], rdr["CategoryId"], rdr["CategoryName"]);
+                    Console.WriteLine();
+                }
+
+            }
+            finally
+            {
+                // close the reader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public void ReadCategory()
+        {
+            SqlDataReader rdr = null;
+
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // 1. Instantiate a new command with a query and connection
+                SqlCommand cmd = new SqlCommand("select * from Category", conn);
+
+                // 2. Call Execute reader to get query results
+                rdr = cmd.ExecuteReader();
+
+                // print the CategoryName of each record
+                while (rdr.Read())
+                {
+
+                    Console.WriteLine("Category Id : {0} || Category Name : {1} ", rdr["CategoryId"], rdr["CategoryName"]);
+                    Console.WriteLine();
+                }
+
+            }
+            finally
+            {
+                // close the reader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+
+        }
+
         public int GetNumberOfRecords()
         {
             int count = -1;
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("Select count(*) from Student", conn);
+                SqlCommand cmd = new SqlCommand("Select count(*) from Product", conn);
 
                 count = (int)cmd.ExecuteScalar();
             }
@@ -152,7 +194,7 @@ namespace Student_Course_Data_Access_Layer
                 conn.Open();
 
                 // 1. Instantiate a new command with a query and connection
-                SqlCommand cmd = new SqlCommand("select Id from Student", conn);
+                SqlCommand cmd = new SqlCommand("select PId from Product", conn);
 
                 // 2. Call Execute reader to get query results
                 rdr = cmd.ExecuteReader();
@@ -160,7 +202,7 @@ namespace Student_Course_Data_Access_Layer
                 // print the id of each record
                 while (rdr.Read())
                 {
-                    if (rdr["Id"].ToString() == Id)
+                    if (rdr["PId"].ToString() == Id)
                     {
                         return true;
                     }
@@ -184,6 +226,117 @@ namespace Student_Course_Data_Access_Layer
                 }
             }
 
+        }
+
+        public bool InsertCategory(string CId, string CName)
+        {
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+
+                // prepare command string
+
+                string insertString = $"Insert into Category values('{CId}','{CName}')";
+
+
+                // 1. Instantiate a new command with a query and connection
+                SqlCommand cmd = new SqlCommand(insertString, conn);
+
+                // 2. Call ExecuteNonQuery to send command
+
+                int n = cmd.ExecuteNonQuery();
+                if (n > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (SqlException e)
+            {
+                if (e.Number == 547)
+                {
+                    Console.WriteLine("Please Insert Above Metioned Category Id");
+                    Console.WriteLine();
+
+
+                }
+                if (e.Number == 2627)
+                {
+                    Console.WriteLine("This Course Id is Already Exist In DataBase");
+                    Console.WriteLine();
+
+                }
+                else
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+                return false;
+
+            }
+
+            finally
+            {
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public void ReadDataProduct(string pid)
+        {
+
+            SqlDataReader rdr = null;
+
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // 1. Instantiate a new command with a query and connection
+                SqlCommand cmd = new SqlCommand("select * from Product where Product.PId='" + pid + "'", conn);
+
+                // 2. Call Execute reader to get query results
+                rdr = cmd.ExecuteReader();
+
+                // print the CategoryName of each record
+                while (rdr.Read())
+                {
+                    Console.WriteLine("PId ProductName Price CategoryId : ");
+                    for (int i = 0; i < rdr.FieldCount; i++)
+                    {
+                        Console.Write(rdr[i] + " ");
+                    }
+                    Console.WriteLine("");
+                }
+
+
+
+                
+                
+
+            }
+            finally
+            {
+                // close the reader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
 
         }
 
@@ -198,7 +351,7 @@ namespace Student_Course_Data_Access_Layer
                 {
                     case 1:
 
-                        string UpdateString = $"Update Student set Id= '{s}' where Id = '{m}'";
+                        string UpdateString = $"Update Product set PId= '{s}' where PId = '{m}'";
 
                         SqlCommand cmd = new SqlCommand(UpdateString, conn);
 
@@ -217,7 +370,7 @@ namespace Student_Course_Data_Access_Layer
 
                     case 2:
 
-                        string UpdateString1 = $"Update Student set Name= '{s}' where Id = '{m}'";
+                        string UpdateString1 = $"Update Product set PName= '{s}' where PId = '{m}'";
 
                         SqlCommand cmd1 = new SqlCommand(UpdateString1, conn);
 
@@ -232,7 +385,7 @@ namespace Student_Course_Data_Access_Layer
                         }
 
                     case 3:
-                        string UpdateString2 = $"Update Student set Age= '{s}' where Id = '{m}'";
+                        string UpdateString2 = $"Update Student set Price= '{s}' where PId = '{m}'";
 
                         SqlCommand cmd2 = new SqlCommand(UpdateString2, conn);
 
@@ -249,7 +402,7 @@ namespace Student_Course_Data_Access_Layer
 
 
                     case 4:
-                        string UpdateString3 = $"Update Student set Standard= '{s}' where Id = '{m}'";
+                        string UpdateString3 = $"Update Student set CategoryId= '{s}' where PId = '{m}'";
 
                         SqlCommand cmd3 = new SqlCommand(UpdateString3, conn);
 
@@ -262,20 +415,7 @@ namespace Student_Course_Data_Access_Layer
                         {
                             return false;
                         }
-                    case 5:
-                        string UpdateString4 = $"Update Student set City= '{s}' where Id = '{m}'";
-
-                        SqlCommand cmd4 = new SqlCommand(UpdateString4, conn);
-
-                        int p4 = cmd4.ExecuteNonQuery();
-                        if (p4 > 0)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
-                        }
+                    
                     default:
                         return false;
 
@@ -303,7 +443,7 @@ namespace Student_Course_Data_Access_Layer
             {
                 conn.Open();
 
-                string DeleteString = $"delete from Student where Id = '{id}'";
+                string DeleteString = $"delete from Product where PId = '{id}'";
 
                 SqlCommand cmd = new SqlCommand(DeleteString, conn);
 
@@ -332,112 +472,9 @@ namespace Student_Course_Data_Access_Layer
             }
 
         }
-
-        public void ReadCourse()
-        {
-            SqlDataReader rdr = null;
-
-            try
-            {
-                // Open the connection
-                conn.Open();
-
-                // 1. Instantiate a new command with a query and connection
-                SqlCommand cmd = new SqlCommand("select * from Course", conn);
-
-                // 2. Call Execute reader to get query results
-                rdr = cmd.ExecuteReader();
-
-                // print the CategoryName of each record
-                while (rdr.Read())
-                {
-
-                    Console.WriteLine("Course Id : {0} || Course Name : {1} || Tutor's Name :{2} || Course Duration in Hrs :{3}", rdr["CId"], rdr["CName"], rdr["CTutor"], rdr["CDuration"]);
-                    Console.WriteLine();
-                }
-
-            }
-            finally
-            {
-                // close the reader
-                if (rdr != null)
-                {
-                    rdr.Close();
-                }
-
-                // Close the connection
-                if (conn != null)
-                {
-                    conn.Close();
-                }
-            }
-
-
-        }
-
-        public bool InsertCourse(string CId, string CName, string CTutor, int CDuration)
-        {
-            try
-            {
-                // Open the connection
-                conn.Open();
-
-
-                // prepare command string
-
-                string insertString = $"Insert into Course values('{CId}','{CName}','{CTutor}','{CDuration}'";
-
-
-                // 1. Instantiate a new command with a query and connection
-                SqlCommand cmd = new SqlCommand(insertString, conn);
-
-                // 2. Call ExecuteNonQuery to send command
-
-                int n = cmd.ExecuteNonQuery();
-                if (n > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (SqlException e)
-            {
-                if (e.Number == 547)
-                {
-                    Console.WriteLine("Please Insert Above Metioned Course Id");
-                    Console.WriteLine();
-
-
-                }
-                if (e.Number == 2627)
-                {
-                    Console.WriteLine("This Course Id is Already Exist In DataBase");
-                    Console.WriteLine();
-
-                }
-                else
-                {
-                    Console.WriteLine(e.Message);
-                }
-
-                return false;
-
-            }
-
-            finally
-            {
-                // Close the connection
-                if (conn != null)
-                {
-                    conn.Close();
-                }
-            }
-
-
-        }
     }
 
 }
+    
+
+

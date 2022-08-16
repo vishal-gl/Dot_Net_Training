@@ -16,12 +16,13 @@ namespace Student_Course_BusinessLogic
             Console.WriteLine("Press 2 to View All Students");
             Console.WriteLine("Press 3 to Update Deatils Student");
             Console.WriteLine("Press 4 to Delete Record of Student");
-            Console.WriteLine("Press 5 to Exit");
+            Console.WriteLine("Press 5 to Add Course Details");
+            Console.WriteLine("Press 6 to Exit");
             Console.WriteLine("Enter Your choice:");
             try
             {
                 byte option = Convert.ToByte(Console.ReadLine());
-                if (option>5)
+                if (option>6)
                 {
                     throw new Validation();
                 }
@@ -167,6 +168,41 @@ namespace Student_Course_BusinessLogic
                 v.Input();
                 DeleteStudent();
             }
+        }
+
+        public void AddCourse()
+        {
+            try
+            {
+                Console.WriteLine("Enter Course ID starts with C :");
+                string Cname = Console.ReadLine();
+                Console.WriteLine("Enter Course Name :");
+                string Cid = Console.ReadLine();
+                
+                Console.WriteLine("Enter Course Tutor's Name :");
+                string Ctutor = Console.ReadLine();
+                Console.WriteLine("Enter Course Duration in Hrs:");
+                int Cduration = int.Parse(Console.ReadLine());
+
+               
+                Console.WriteLine();
+
+                
+                studentservice.AddCourse(Cid, Cname, Ctutor, Cduration);
+
+                Console.WriteLine();
+            }
+            catch (Validation v)
+            {
+                v.Input();
+                
+                Console.WriteLine();
+
+                Menu();
+            }
+
+
+
         }
 
     }
