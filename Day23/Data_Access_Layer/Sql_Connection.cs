@@ -385,7 +385,7 @@ namespace Data_Access_Layer
                         }
 
                     case 3:
-                        string UpdateString2 = $"Update Student set Price= '{s}' where PId = '{m}'";
+                        string UpdateString2 = $"Update Product set Price= '{s}' where PId = '{m}'";
 
                         SqlCommand cmd2 = new SqlCommand(UpdateString2, conn);
 
@@ -402,7 +402,7 @@ namespace Data_Access_Layer
 
 
                     case 4:
-                        string UpdateString3 = $"Update Student set CategoryId= '{s}' where PId = '{m}'";
+                        string UpdateString3 = $"Update Product set CategoryId= '{s}' where PId = '{m}'";
 
                         SqlCommand cmd3 = new SqlCommand(UpdateString3, conn);
 

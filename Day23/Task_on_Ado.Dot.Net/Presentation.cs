@@ -32,7 +32,7 @@ namespace Presentation_Layer
                         break;
                     case 5:
                         product.Update();
-                        product.DisplayProduct();
+                        product.DisplayAll();
                         
                         break;
                     case 6:
