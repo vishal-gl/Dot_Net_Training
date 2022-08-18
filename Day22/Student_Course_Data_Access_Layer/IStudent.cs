@@ -14,5 +14,8 @@ namespace Student_Course_Data_Access_Layer
         
         void DisplayAll();
         bool DeleteStudent(string id);
+
+        void ReadCourse();
+
     }
 }

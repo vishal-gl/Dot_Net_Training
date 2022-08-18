@@ -1,0 +1,68 @@
+﻿body
+{
+    margin :0;
+    padding:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:url(Blue_background.jpg);
+    background-size:cover;
+
+}
+.learn{
+    width:250px;
+    padding:20px;
+    position:absolute;
+    
+    
+    right:37%;
+    height:78%;
+    transform:translate(10,10);
+    background:rgb(0,0,0,0.4);
+    outline-color:#ff9c00;
+    text-align:center;
+}
+.learn h2{
+    color:#e9d87a;
+    text-transform:uppercase;
+    font-weight:700;
+
+}
+.learn input[type="text"], .learn input[type="password"],  .learn input[type="text"], .learn input[type="tel"] {
+        border: 0;
+        background: #9af1ef;
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+        border: 4px solid #ffffff;
+        padding: 14px,10px;
+        width: 200px;
+        outline: none;
+        color: black;
+        
+        border-radius: 14px;
+        transition: cubic-bezier(0.25);
+}
+.learn input[type="text"]:focus,.learn input[type="password"]:focus, .learn input[type="text"]:focus,.learn input[type="tel"]:focus{
+    width:240px;
+    border-color:rgb(255 156 0 / 0.87);
+    background:white;
+
+}
+    .learn input[type="submit"] {
+        border: 0;
+        background: #e2f3f2;
+        display: block;
+        margin: 15px auto;
+        text-align: center;
+        left: 53%;
+        border: 2px solid #808080;
+        padding: 14px,10px;
+        width: 150px;
+        outline: none;
+        color: black;
+        border-radius: 15px;
+        transition: all;
+        cursor: pointer;
+    }
+.learn input[type="submit"]:hover {
+        background: rgb(255 156 0 / 0.87);
+}

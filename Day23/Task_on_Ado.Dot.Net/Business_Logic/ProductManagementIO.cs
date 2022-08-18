@@ -19,12 +19,13 @@ namespace Business_Logic
             Console.WriteLine("Press 5 to Update Record of Product");
             Console.WriteLine("Press 6 to delete a Record in Product Data using Product Id");
             Console.WriteLine("Press 7 to Display All Details of Category using Category Id");
+            
             Console.WriteLine("Press 8 to Exit");
             Console.WriteLine("Enter Your choice:");
             try
             {
                 byte option = Convert.ToByte(Console.ReadLine());
-                if (option > 7)
+                if (option > 8)
                 {
                     throw new Validation();
                 }

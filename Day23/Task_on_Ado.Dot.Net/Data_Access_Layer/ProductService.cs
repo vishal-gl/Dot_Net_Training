@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data_Access_Layer
 {
-    public class ProductService
+    public class ProductService:IProduct
     {
         Sql_Connection std = new Sql_Connection();
 
