@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataLinq">
+  <DataContextMoniker Name="/DataLinqDataContext" />
+  <nestedChildShapes>
+    <classShape Id="930c79b5-3217-44ab-a7a3-93311577896e" absoluteBounds="4.5, 2.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DataLinqDataContext/Employee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3d03be81-cf1d-4e76-9649-3b620d46b7b7" absoluteBounds="4.515, 3.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="20216050-7580-4881-b17e-971d5a2c5b52" absoluteBounds="0.75, 0.75, 2, 0.8093896484375">
+      <DataClassMoniker Name="/DataLinqDataContext/Class1" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e6aae117-868c-4ad4-ab12-71c974807135" absoluteBounds="0.75, 0.75, 0.125, 0.2493896484375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

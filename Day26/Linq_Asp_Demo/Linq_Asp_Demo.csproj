@@ -7,16 +7,16 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E89A1809-2311-40BA-9E11-5C5403ACC8B1}</ProjectGuid>
+    <ProjectGuid>{C5387BF4-2D8D-4422-8CDB-200FB7EAA9B9}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_3Tier_AspDotNetDemo</RootNamespace>
-    <AssemblyName>3Tier_AspDotNetDemo</AssemblyName>
+    <RootNamespace>Linq_Asp_Demo</RootNamespace>
+    <AssemblyName>Linq_Asp_Demo</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44305</IISExpressSSLPort>
+    <IISExpressSSLPort>44366</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -67,20 +67,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="RegistrationForm.aspx" />
+    <Content Include="LinqDemo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistrationForm.aspx.cs">
-      <DependentUpon>RegistrationForm.aspx</DependentUpon>
+    <Compile Include="LinqDemo.aspx.cs">
+      <DependentUpon>LinqDemo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="RegistrationForm.aspx.designer.cs">
-      <DependentUpon>RegistrationForm.aspx</DependentUpon>
+    <Compile Include="LinqDemo.aspx.designer.cs">
+      <DependentUpon>LinqDemo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Linqasp.Demo" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -88,12 +89,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Business_Logic\Business_Logic.csproj">
-      <Project>{f7b3abc2-5e3a-48e3-b3b5-3f8cbc7fd82e}</Project>
-      <Name>Business_Logic</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -108,9 +103,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>49335</DevelopmentServerPort>
+          <DevelopmentServerPort>55002</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44305/</IISUrl>
+          <IISUrl>https://localhost:44366/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

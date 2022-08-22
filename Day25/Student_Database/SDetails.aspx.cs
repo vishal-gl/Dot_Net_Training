@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Collections;
 
 namespace Student_Database
 {
@@ -97,22 +98,8 @@ namespace Student_Database
             conn.Close();
 
         }
-        protected void gridService_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            try
-            {
-                GridView1.EditIndex = e.NewEditIndex;
-                Button2_Click(sender,e); 
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        protected void GridView1_RowDeleting(object sender, GridViewDeletedEventArgs e)
-        {
-
-        }
+        
+        
 
         protected void Button3_Click(object sender, EventArgs e)
         {
@@ -178,5 +165,23 @@ namespace Student_Database
 
         }
 
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
+            conn.Open();
+
+
+            SqlCommand cmd = new SqlCommand("spDelete", conn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@empId", id);
+            GetEmployeeList();
+
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+            GetEmployeeList();
+
+        }
     }
 }
