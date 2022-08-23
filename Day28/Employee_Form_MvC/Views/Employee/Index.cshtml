@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="container">
+    <h3>Employee Registration Form: </h3>
+    @Html.ActionLink("Go to About", "About","Employee")
+    @Html.Hidden("StudentId", "100")
+    @using (Html.BeginForm("About", "Employee", FormMethod.Post))
+    {
+        <div>
+            <table border="1" class="table table-bordered" style="background-color:antiquewhite;width:500px;">
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.Label("Employee Name ")
+                        </td>
+                        <td>
+                            @Html.TextBox("txtUserName", "", new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.Label("Employee Id")
+                        </td>
+                        <td>
+                            @Html.TextBox("txtId", "", new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Gender:
+                        </td>
+                        <td>
+                            @Html.RadioButton("Gender", "Male", false, new { id = "male" }) Male
+                            @Html.RadioButton("Gender", "Female", false, new { id = "female" }) Female
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Address:
+                        </td>
+                        <td>
+                            @Html.TextArea("Address", " ", new { @class = "form-control", id = "IdAddress" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Department :
+                        </td>
+                        <td>
+                            @Html.CheckBox("Technical") Technical
+                            @Html.CheckBox("Management") Management
+                            @Html.CheckBox("Helper") Helper
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Designation:
+                            @{
+                                IEnumerable<string> strList = new List<string> { "Trainer", "Associate", "Senior","Super Senior" };
+                            }
+                        </td>
+                        <td>
+                            @Html.DropDownList("ddlDesignation", new SelectList(strList, strList.FirstOrDefault()), "--Select Designation----")
+                        </td>
+                    </tr>
+                    @*<tr>
+                        <td>Skills</td>
+                        <td>
+                            @Html.ListBox("Select Skills", new List<SelectListItem> {
+                           new SelectListItem{Text= "C#",Value="1"},
+                           new SelectListItem{ Text="ASP.NET",Value="2" },
+                           new SelectListItem{ Text="ASP.NET Core",Value="3" },
+                           new SelectListItem{ Text="Azure",Value="4" }
+                            })
+                        </td>
+
+                    </tr>*@
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <input type="submit" class="btn-primary" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+

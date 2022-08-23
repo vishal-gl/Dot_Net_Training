@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<html>
+<head>
+    <title>
+        Employee Details
+    </title>
+</head>
+<body>
+    @{
+        var employee = ViewBag.Emp as MVC_Classes_Demo.Models.Employee;
+    }
+
+    <h2>@ViewBag.Header</h2>
+    <table>
+        <tr>
+            <td>EmployeeID:</td>
+            <td>@employee.Id:</td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td>@employee.Name:</td>
+        </tr>
+        <tr>
+            <td>Gender:</td>
+            <td>@employee.Gender:</td>
+        </tr>
+        <tr>
+            <td>City:</td>
+            <td>@employee.City:</td>
+        </tr>
+        <tr>
+            <td>Salary:</td>
+            <td>@employee.Salary:</td>
+        </tr>
+        <tr>
+            <td>Address:</td>
+            <td>@employee.Address:</td>
+        </tr>
+    </table>
+</body>
+
+
+</html>
+
