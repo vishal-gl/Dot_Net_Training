@@ -1,0 +1,48 @@
+﻿@model ViewModelDemo.ViewModel.EmployeeDetailsViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h1>@Model.PageHeader</h1>
+        <hr />
+        <div>
+            EmployeeId:@Model.Employee.EmployeeId
+        </div>
+        <div>
+            Employee Name:@Model.Employee.Name
+        </div>
+        <div>
+            Employee Gender:@Model.Employee.Gender
+        </div>
+        <div>
+            Employee Department:@Model.Employee.Department
+        </div>
+        <div>
+            Employee Salary:@Model.Employee.Salary
+        </div>
+        <h1>Employee Address</h1>
+        <div>
+            City:@Model.Address.City
+        </div>
+        <div>
+            State:@Model.Address.State
+        </div>
+        <div>
+            Country:@Model.Address.Country
+        </div>
+        <div>
+            Pincode:@Model.Address.Pincode
+        </div>
+        
+</body>
+</html>
