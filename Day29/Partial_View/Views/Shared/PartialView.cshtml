@@ -1,12 +1,9 @@
 ﻿@model IEnumerable<Partial_View.Models.Product>
 
-
-
-@*<p>
+<p>
     @Html.ActionLink("Create New", "Create")
-</p>*@
-
-@*<table class="table">
+</p>
+<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -42,7 +39,7 @@
             @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
         </td>
-    </tr>*@
+    </tr>
 }
 
-
+</table>

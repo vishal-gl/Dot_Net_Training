@@ -22,10 +22,14 @@ namespace Partial_View.Controllers
             return View(products);
            
         }
+        
         public PartialViewResult GetSingle()
         {
-            Product p = new Product { ProductId = 1, Name = "Chilli" };
-            return PartialView("Partial", p);
+            List<Product> products = new List<Product>()
+            {
+                new Product{ProductId=1,Name="Chilli",Category="Category1",Description="Grocery",Price=23} };
+           
+            return PartialView("PartialView", products);
         }
     }
 }
