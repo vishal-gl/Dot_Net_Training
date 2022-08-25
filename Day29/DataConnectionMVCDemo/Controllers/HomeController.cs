@@ -18,20 +18,40 @@ namespace DataConnectionMVCDemo.Controllers
             
         }
 
-        public ActionResult About()
+        public ActionResult About(int Id)
         {
             NorthwindEntities dbcontext = new NorthwindEntities();
-            var emplist = dbcontext.Employees.FirstOrDefault(x => x.FirstName=="Nancy");
-            return View(emplist);
-
-
-
-
-
-
-
            
+         
+            var emplist = dbcontext.Employees.FirstOrDefault(x=>x.EmployeeID==Id);
+            
+            return View(emplist);
+          
         }
+
+        public ActionResult Edit(int id)
+        {
+            NorthwindEntities dbcontext = new NorthwindEntities();
+            var emplist = dbcontext.Employees.FirstOrDefault(x => x.EmployeeID == id);
+
+            
+            return View(emplist);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Employee emp)
+        {
+
+            NorthwindEntities dbcontext = new NorthwindEntities();
+            if (ModelState.IsValid)
+            {
+                dbcontext.Entry(emp).State = System.Data.Entity.EntityState.Modified;
+                dbcontext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(emp);
+        }
+
 
         public ActionResult Contact()
         {
