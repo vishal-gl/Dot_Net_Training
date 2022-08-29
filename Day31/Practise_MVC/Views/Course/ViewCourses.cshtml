@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Practise_MVC.Models.Course>
+
+@{
+    ViewBag.Title = "ViewCourses";
+}
+
+<h2>ViewCourses</h2>
+
+<p>
+    @Html.ActionLink("Add Course", "Register","Course")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseName)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Update", "Update", new { id=item.CourseId }) |
+            @Html.ActionLink("Course Details", "Details", new { id=item.CourseId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CourseId })
+        </td>
+    </tr>
+}
+
+</table>
