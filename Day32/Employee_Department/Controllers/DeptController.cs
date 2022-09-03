@@ -123,5 +123,49 @@ namespace Employee_Department.Controllers
             }
             return View(c);
         }
+
+        public ActionResult GetEmployee(int? id)
+        {
+            if (id == null)
+            {
+                throw new CustomException("Input is Not Getting Properly");
+            }
+            Department c = db.Departments.Find(id);
+            if (c == null)
+            {
+                throw new CustomException("Id is not available in DataBase to Update");
+            }
+            return View(c);
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [MyException]
+
+        public ActionResult GetEmployee(Department c)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var res=db.Database.ExecuteSqlCommand("exec GetEmployee @did='" + c.DId + "'");
+                if (res == 0)
+                {
+                    throw new CustomException("Database has no Records");
+                }
+                else
+                {
+                    
+                    return View(res);
+                    
+
+                }
+
+                
+            }
+            else
+            {
+                throw new CustomException("Not Done");
+            }
+        }
     }
 }

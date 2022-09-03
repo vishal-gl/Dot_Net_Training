@@ -36,7 +36,7 @@ namespace Practise_MVC.Models
         [Range(3, 32, ErrorMessage = "Age Should be lie between 3 and 40")]
         public int Age { get; set; }
 
-        [Required(ErrorMessage ="Course Id is Required")]
+        [Required(ErrorMessage = "Course Id is Required")]
         public int CourseId { get; set; }
 
 
@@ -56,7 +56,8 @@ namespace Practise_MVC.Models
 
 
         public Course course { get; set; }
-        
+
+
 
 
 
