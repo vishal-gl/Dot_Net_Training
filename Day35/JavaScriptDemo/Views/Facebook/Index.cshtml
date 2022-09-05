@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET';
+                url: 'https://localhost:44346/Facebook/Index';
+                contentType:''
+            })
+        })
+    </script>
+</head>
+<body>
+    <div> 
+        <p>My Application</p>
+    </div>
+</body>
+</html>

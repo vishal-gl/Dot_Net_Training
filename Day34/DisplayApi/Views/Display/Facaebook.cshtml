@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Facaebook</title>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(documnet).ready(function () {
+            type: 'GET';
+            url: 'https://localhost:443';
+            contentType: 'application/json';
+            dataType: 'json';
+            success: function(data) {
+                alert(data);
+            }
+            failure: function(data) {
+                alert(data);
+            }
+        })
+    </script>
+
+</head>
+<body>
+    
+    <div>
+    </div>
+</body>
+</html>

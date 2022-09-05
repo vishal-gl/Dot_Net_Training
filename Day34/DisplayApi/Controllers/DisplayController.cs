@@ -12,7 +12,11 @@ namespace DisplayApi.Controllers
     public class DisplayController : Controller
     {
         // GET: Display
+       
+       
+
         
+
         public ActionResult Index()
         {
             string url = "https://localhost:44342/GetEmployee";
