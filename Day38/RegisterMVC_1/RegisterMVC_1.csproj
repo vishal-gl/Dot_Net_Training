@@ -163,6 +163,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\InsertData.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\SuccsesFullyLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

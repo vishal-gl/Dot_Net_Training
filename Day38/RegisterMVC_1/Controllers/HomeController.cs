@@ -70,10 +70,14 @@ namespace RegisterMVC_1.Controllers
                 webClient.Headers.Add("Content-type:application/Json");
                 webClient.Headers.Add("Accept:application/Json");
                 webClient.UploadString("https://localhost:44396/LoginData", "PUT", JsonConvert.SerializeObject(std));
-                return RedirectToAction("Index");
+                return RedirectToAction("SuccsesFullyLogin");
             }
 
 
+        }
+        public ActionResult SuccsesFullyLogin()
+        {
+            return View();
         }
 
     }
