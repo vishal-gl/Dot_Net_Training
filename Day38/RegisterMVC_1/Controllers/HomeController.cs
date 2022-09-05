@@ -51,20 +51,28 @@ namespace RegisterMVC_1.Controllers
             }
             return RedirectToAction("Index");
         }
-       
-        
 
-        public ActionResult Login(string username,string password)
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+            
+
+
+        }
+
+
+        [HttpPost]
+        public ActionResult Login(RegisterMVC std)
         {
             using (WebClient webClient = new WebClient())
             {
                 webClient.Headers.Add("Content-type:application/Json");
                 webClient.Headers.Add("Accept:application/Json");
-                string res = webClient.DownloadString("https://localhost:44396/LoginData/"+username+password);
-                var list = JsonConvert.DeserializeObject<RegisterMVC>(res);
-                return View(list);
-
+                webClient.UploadString("https://localhost:44396/LoginData", "PUT", JsonConvert.SerializeObject(std));
+                return RedirectToAction("Index");
             }
+
 
         }
 

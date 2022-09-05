@@ -26,14 +26,21 @@ namespace Register_Api_1.Controllers
             db.SaveChanges();
 
         }
-
-        
-
-        [HttpPost]
-        [Route("LoginData/{username}/{password}")]
-        public Register logindata(string username,string password)
+        [HttpGet]
+        [Route("SelectData/{id}")]
+        public Register SelectData(int id)
         {
-            var res = db.Registers.FirstOrDefault(x => x.UserName == username && x.Password==password);
+            var res = db.Registers.FirstOrDefault(x => x.Id == id);
+            return res;
+        }
+
+
+
+        [HttpPut]
+        [Route("LoginData")]
+        public Register logindata(Register r)
+        {
+            var res = db.Registers.FirstOrDefault(x => x.UserName == r.UserName && x.Password==r.Password);
             if (res == null)
             {
                 return null;
