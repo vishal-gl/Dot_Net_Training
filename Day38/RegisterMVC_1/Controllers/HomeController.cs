@@ -51,11 +51,7 @@ namespace RegisterMVC_1.Controllers
             }
             return RedirectToAction("Index");
         }
-        public ActionResult Login()
-        {
-            RegisterMVC obj = new RegisterMVC();
-            return View(obj);
-        }
+       
         
 
         public ActionResult Login(string username,string password)
