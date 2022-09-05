@@ -60,7 +60,7 @@ namespace RegisterMVC_1.Controllers
             {
                 webClient.Headers.Add("Content-type:application/Json");
                 webClient.Headers.Add("Accept:application/Json");
-                string res = webClient.DownloadString("https://localhost:44332/LoginData/" + username+password);
+                string res = webClient.DownloadString("https://localhost:44396/LoginData/"+username+password);
                 var list = JsonConvert.DeserializeObject<RegisterMVC>(res);
                 return View(list);
 
