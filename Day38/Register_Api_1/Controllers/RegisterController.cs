@@ -30,7 +30,7 @@ namespace Register_Api_1.Controllers
         
 
         [HttpPost]
-        [Route("LoginData/username/password")]
+        [Route("LoginData/{username}/{password}")]
         public Register logindata(string username,string password)
         {
             var res = db.Registers.FirstOrDefault(x => x.UserName == username && x.Password==password);
