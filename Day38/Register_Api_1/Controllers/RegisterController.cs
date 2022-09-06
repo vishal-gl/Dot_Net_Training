@@ -36,18 +36,18 @@ namespace Register_Api_1.Controllers
 
 
 
-        [HttpPut]
-        [Route("LoginData")]
-        public Register logindata(Register r)
+        [HttpGet]
+        [Route("LoginData/{UserName}/{Password}")]
+        public int logindata(string UserName,string Password)
         {
-            var res = db.Registers.FirstOrDefault(x => x.UserName == r.UserName && x.Password==r.Password);
-            if (res == null)
+            var res = db.Registers.FirstOrDefault(x => x.UserName == UserName && x.Password==Password);
+            if (res !=null)
             {
-                return null;
+                return 1;
             }
             else
             {
-                return res;
+                return 0;
             }
             
 

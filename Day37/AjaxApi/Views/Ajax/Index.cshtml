@@ -1,0 +1,191 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#btnsubmit').click(function () {
+                alert("You are Inserting");
+                var id = $('#txtId').val();
+                var name = $('#txtName').val();
+                var age = $('#txtAge').val();
+                var standard = $('#txtStandard').val();
+                var city = $('#txtCity').val();
+                var cid = $('#txtCid').val();
+                obj = { Id: id, Name: name,Age:age,Standard:standard,City:city,CId:cid}
+                
+                    
+
+                
+                $.ajax({
+                    type: "POST",
+                    url: "https://localhost:44332/InsertData",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(obj),
+                    success: function (data) {
+                        var d = Json.stringify(data);
+                        if (d > 0) {
+                            alert('Successfully Inserted');
+
+                        }
+                        else {
+                            alert('Unable to create new record');
+                        }
+                    },
+                    failure: function (data) {
+                        alert(data.responseText);
+                    },
+                    error: function (data) {
+                        alert(data.responseText);
+                    }
+
+                });
+
+            });
+
+        });
+
+        $(document).ready(function () {
+            $('#btnsupdate').click(function () {
+                alert("You are Updating");
+                var id = $('#txtId').val();
+                var name = $('#txtName').val();
+                var age = $('#txtAge').val();
+                var standard = $('#txtStandard').val();
+                var city = $('#txtCity').val();
+                var cid = $('#txtCid').val();
+                obj = { Id: id, Name: name, Age: age, Standard: standard, City: city, CId: cid }
+
+
+
+
+                $.ajax({
+                    type: "PUT",
+                    url: "https://localhost:44332/UpdateData",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(obj),
+                    success: function (data) {
+                        var d = Json.stringify(data);
+                        if (d > 0) {
+                            alert('Successfully Updated');
+
+                        }
+                        else {
+                            alert('Unable to create new record');
+                        }
+                    },
+                    failure: function (data) {
+                        alert(data.responseText);
+                    },
+                    error: function (data) {
+                        alert(data.responseText);
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    <h2>Register YourSelf</h2>
+    <br />
+    <div class="row" style="border:2px solid black;margin:0;padding:20px;">
+        <div class="col-md-2">
+            Id
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtId" class="form-control" placeholder="Enter Student Id" />
+        </div><br />
+        <div class="col-md-2">
+            Name
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtName" class="form-control" placeholder="Enter Your Name" />
+        </div><br />
+        <div class="col-md-2">
+            Age
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtAge" class="form-control" placeholder="Enter Your Age" />
+        </div><br />
+        <div class="col-md-2">
+            Standard
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtStandard" class="form-control" placeholder="Enter Your Stanadard" />
+        </div><br />
+        <div class="col-md-2">
+            City
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtCity" class="form-control" placeholder="Enter Your City" />
+        </div><br />
+        <div class="col-md-2">
+            CourseId
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtCid" class="form-control" placeholder="Enter Course Id" />
+        </div><br /><br />
+        <div class="col-md-12">
+            <button class="button" id="btnsubmit"><h3><b>Register</b></h3></button>
+        </div>
+    </div>
+
+    <h2>Update YourSelf</h2>
+    <br />
+    <div class="row" style="border:2px solid black;margin:0;padding:20px;">
+        <div class="col-md-2">
+            Id
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtId" class="form-control" placeholder="Enter Student Id" />
+        </div><br />
+        <div class="col-md-2">
+            Name
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtName" class="form-control" placeholder="Enter Your Name" />
+        </div><br />
+        <div class="col-md-2">
+            Age
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtAge" class="form-control" placeholder="Enter Your Age" />
+        </div><br />
+        <div class="col-md-2">
+            Standard
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtStandard" class="form-control" placeholder="Enter Your Stanadard" />
+        </div><br />
+        <div class="col-md-2">
+            City
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtCity" class="form-control" placeholder="Enter Your City" />
+        </div><br />
+        <div class="col-md-2">
+            CourseId
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtCid" class="form-control" placeholder="Enter Course Id" />
+        </div><br /><br />
+        <div class="col-md-12">
+            <button class="button" id="btnsupdate"><h3><b>Update</b></h3></button>
+        </div>
+    </div>
+</body>
+</html>

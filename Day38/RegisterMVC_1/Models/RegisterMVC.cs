@@ -14,6 +14,7 @@ namespace RegisterMVC_1.Models
 
         [Required(ErrorMessage = "UserName Is Required")]
         [MaxLength(20, ErrorMessage = "UserName have should not have more than 20 character")]
+        [RegularExpression("^[a-zA-Z]*$", ErrorMessage = "UserName Contain Only Alphabets")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Password Is Required")]

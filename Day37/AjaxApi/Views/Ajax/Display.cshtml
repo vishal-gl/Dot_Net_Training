@@ -1,0 +1,111 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #customers tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #customers tr:hover {
+                background-color: #ddd;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #04AA6D;
+                color: white;
+            }
+    </style>
+    <script>
+        
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "https://localhost:44332/DisplayData",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                   
+                    
+                    
+                    $.each(data, function (i, item) {
+                        var row = "<tr>"
+                            + "<td>" + item.Id + "</td>"
+                            + "<td>" + item.Name + "</td>"
+                            + "<td>" + item.Age + "</td>"
+                            + "<td>" + item.Standard + "</td>"
+                            + "<td>" + item.City + "</td>"
+                            + "<td>" + item.CId + "</td>"
+                            + "</tr>";
+                        $('#StudentTBody').append(row);
+
+                    });
+                },
+                failure: function (data) {
+                    alert(data.responseText);
+                },
+                error: function (data) {
+                    alert(data.responseText);
+                }
+
+
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+    <div>
+
+        <br />
+        <br />
+        <p>@Html.ActionLink("Create New", "Index", "Ajax")</p>
+        <br />
+        <br />
+        <br />
+        <table id="customers">
+            <thead>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Standard</th>
+                    <th>City</th>
+                    <th>CId</th>
+                </tr>
+            </thead>
+            <tbody id="StudentTBody">
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+
+
+

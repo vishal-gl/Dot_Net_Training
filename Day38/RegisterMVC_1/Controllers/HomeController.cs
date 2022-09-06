@@ -13,14 +13,18 @@ namespace RegisterMVC_1.Controllers
     {
         public ActionResult Index()
         {
-            using (WebClient webClient = new WebClient())
-            {
-                webClient.Headers.Add("Contet-type:application/Json");
-                webClient.Headers.Add("Accept:application/Json");
-                string res = webClient.DownloadString("https://localhost:44396/DisplayData");
-                var list = JsonConvert.DeserializeObject<List<RegisterMVC>>(res);
-                return View(list);
-            }
+           
+                using (WebClient webClient = new WebClient())
+                {
+                    webClient.Headers.Add("Contet-type:application/Json");
+                    webClient.Headers.Add("Accept:application/Json");
+                    string res = webClient.DownloadString("https://localhost:44396/DisplayData");
+                    var list = JsonConvert.DeserializeObject<List<RegisterMVC>>(res);
+                    return View(list);
+                }
+
+           
+            
 
         }
 
@@ -49,7 +53,7 @@ namespace RegisterMVC_1.Controllers
                 Response.Write(ex.Message);
 
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Login");
         }
 
         [HttpGet]
@@ -65,13 +69,33 @@ namespace RegisterMVC_1.Controllers
         [HttpPost]
         public ActionResult Login(RegisterMVC std)
         {
+
             using (WebClient webClient = new WebClient())
             {
+                string url = std.UserName+"/"+std.Password;
                 webClient.Headers.Add("Content-type:application/Json");
                 webClient.Headers.Add("Accept:application/Json");
-                webClient.UploadString("https://localhost:44396/LoginData", "PUT", JsonConvert.SerializeObject(std));
-                return RedirectToAction("SuccsesFullyLogin");
+                string response = webClient.DownloadString("https://localhost:44396/LoginData/"+url);
+                var res = JsonConvert.DeserializeObject<int>(response);
+                if (res != 0)
+                {
+                    return View("SuccsesFullyLogin");
+                }
+                else
+                {
+                    return View("FailedLogin");
+                }
+                
+                
+
+                
+               
+
             }
+                    
+
+           
+            
 
 
         }
@@ -79,6 +103,9 @@ namespace RegisterMVC_1.Controllers
         {
             return View();
         }
-
+        public ActionResult FailedLogin()
+        {
+            return View();
+        }
     }
 }

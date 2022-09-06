@@ -28,10 +28,11 @@ namespace Student_Apiii.Controllers
 
         [HttpPost]
         [Route("InsertData")]
-        public void InsertData(Student std)
+        public int InsertData(Student std)
         {
             db.Students.Add(std);
-            db.SaveChanges();
+            int res=db.SaveChanges();
+            return res;
            
         }
 

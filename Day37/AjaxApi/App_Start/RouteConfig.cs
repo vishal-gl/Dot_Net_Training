@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace RegisterMVC_1
+namespace AjaxApi
 {
     public class RouteConfig
     {
@@ -16,7 +16,7 @@ namespace RegisterMVC_1
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "InsertData", id = UrlParameter.Optional }
+                defaults: new { controller = "Ajax", action = "Display", id = UrlParameter.Optional }
             );
         }
     }
